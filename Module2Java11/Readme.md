@@ -1,1 +1,1 @@
-![Screenshot](. ./appdiagam.png)
+![Screenshot](img/appdiagam.png)
