@@ -1,0 +1,2 @@
+module cloud.bank.impl {
+}

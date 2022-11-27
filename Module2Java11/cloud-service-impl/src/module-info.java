@@ -1,0 +1,2 @@
+module cloud.service.impl {
+}
