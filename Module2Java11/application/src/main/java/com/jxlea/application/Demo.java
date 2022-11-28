@@ -4,7 +4,7 @@ import com.jxlea.cloud.bank.CloudBank;
 import com.jxlea.cloud.service.CloudService;
 import com.jxlea.dto.bank.card.type.BankCardType;
 import com.jxlea.dto.user.User;
-
+import com.jxlea.service.Service;
 import java.time.LocalDate;
 
 public class Demo {
@@ -48,8 +48,14 @@ public class Demo {
 
         cloudService.getAllUsers().forEach(System.out::println);
         System.out.println("-------");
-        System.out.println("-------");
         cloudService.getAllCards().forEach(System.out::println);
-        cloudService.getSubscriptionByBankCardNumber("3715 5748 4557 1420").orElseThrow();
+        var card = cloudService.getAllCards().get(0);
+
+        var cardFount = cloudService.getSubscriptionByBankCardNumber(card.getNumber()).orElseThrow();
+        System.out.println("---" + cardFount);
+
+        System.out.printf("Average user age is: %s", cloudService.getAverageUsersAge());
+        System.out.println();
+        System.out.printf("User is payable? --%s", Service.isPayableUser(fowler));
     }
 }
