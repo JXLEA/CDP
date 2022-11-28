@@ -1,5 +1,6 @@
 module dto {
     requires lombok;
+
     exports com.jxlea.dto.user;
     exports com.jxlea.dto.subscription;
     exports com.jxlea.dto.bank.card;
