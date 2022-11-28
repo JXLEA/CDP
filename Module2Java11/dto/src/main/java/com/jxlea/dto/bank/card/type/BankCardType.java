@@ -1,5 +1,5 @@
 package com.jxlea.dto.bank.card.type;
 
-public enum BackCardType {
+public enum BankCardType {
     CREDIT, DEBIT
 }
