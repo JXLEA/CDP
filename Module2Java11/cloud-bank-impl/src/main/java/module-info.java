@@ -1,5 +1,7 @@
 module cloud.bank.impl {
     requires lombok;
-    requires bank.api;
-    exports com.jxlea.cloud.bank;
+    requires dto;
+    requires transitive bank.api;
+    exports com.jxlea.cloud.bank to
+            application;
 }

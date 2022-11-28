@@ -1,4 +1,5 @@
 module bank.api {
-    requires transitive dto;
-    exports com.jxlea.bank;
+    requires dto;
+    exports com.jxlea.bank to
+            cloud.bank.impl;
 }
