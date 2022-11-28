@@ -1,5 +1,5 @@
 <archetype>
-  <id>bank-api</id>
+  <id>Module2Java11</id>
   <sources>
     <source>src/main/java/App.java</source>
   </sources>
