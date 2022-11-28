@@ -47,5 +47,9 @@ public class Demo {
         cloudService.subscribe(pitsDebit);
 
         cloudService.getAllUsers().forEach(System.out::println);
+        System.out.println("-------");
+        System.out.println("-------");
+        cloudService.getAllCards().forEach(System.out::println);
+        cloudService.getSubscriptionByBankCardNumber("3715 5748 4557 1420").orElseThrow();
     }
 }

@@ -13,13 +13,13 @@ import java.util.Optional;
 
 public class CloudService implements Service {
 
-    private List<User> userStorage = new ArrayList<>();
+    private List<BankCard> cards = new ArrayList<>();
     private List<Subscription> subscriptionStorage = new ArrayList<>();
 
     @Override
     public void subscribe(BankCard bankCard) {
         Objects.requireNonNull(bankCard);
-        userStorage.add(bankCard.getUser());
+        cards.add(bankCard);
         subscriptionStorage.add(new Subscription(bankCard.getNumber(), LocalDate.now()));
     }
 
@@ -32,6 +32,11 @@ public class CloudService implements Service {
 
     @Override
     public List<User> getAllUsers() {
-        return userStorage;
+        return cards.stream().map(BankCard::getUser).toList();
+    }
+
+    @Override
+    public List<BankCard> getAllCards() {
+        return cards;
     }
 }

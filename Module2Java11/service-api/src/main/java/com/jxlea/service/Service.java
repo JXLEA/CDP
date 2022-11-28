@@ -14,4 +14,6 @@ public interface Service {
     Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
 
     List<User> getAllUsers();
+
+    List<BankCard> getAllCards();
 }

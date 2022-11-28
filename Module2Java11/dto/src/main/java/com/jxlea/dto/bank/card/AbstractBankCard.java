@@ -1,9 +1,11 @@
 package com.jxlea.dto.bank.card;
 
 import com.jxlea.dto.user.User;
+import lombok.ToString;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+@ToString
 public abstract class AbstractBankCard implements BankCard {
     private final String number;
     private final User user;
