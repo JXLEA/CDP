@@ -32,7 +32,10 @@ public class CloudService implements Service {
 
     @Override
     public List<User> getAllUsers() {
-        return cards.stream().map(BankCard::getUser).toList();
+        return cards.stream()
+                .map(BankCard::getUser)
+                .distinct()
+                .toList();
     }
 
     @Override
