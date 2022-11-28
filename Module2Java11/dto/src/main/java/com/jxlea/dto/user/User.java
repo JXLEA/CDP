@@ -1,6 +1,5 @@
 package com.jxlea.dto.user;
 
-import lombok.Data;
 
 import java.time.LocalDate;
 
