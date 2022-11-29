@@ -1,5 +1,6 @@
 package com.jxlea.application;
 
+import com.jxlea.application.exception.NoSubscriptionForCardException;
 import com.jxlea.cloud.bank.CloudBank;
 import com.jxlea.cloud.service.CloudService;
 import com.jxlea.dto.bank.card.type.BankCardType;
@@ -46,13 +47,21 @@ public class Demo {
         var pitsDebit = cloudBank.createBankCard(pirs, BankCardType.DEBIT);
         cloudService.subscribe(pitsDebit);
 
-        cloudService.getAllUsers().forEach(System.out::println);
-        System.out.println("-------");
-        cloudService.getAllCards().forEach(System.out::println);
-        var card = cloudService.getAllCards().get(0);
 
-        var cardFount = cloudService.getSubscriptionByBankCardNumber(card.getNumber()).orElseThrow();
-        System.out.println("---" + cardFount);
+
+
+
+
+
+        System.out.println("USERS------");
+        cloudService.getAllUsers().forEach(System.out::println);
+        System.out.println("CARDS------");
+        cloudService.getAllCards().forEach(System.out::println);
+
+        var card = "4403 7504 8009 9457" ;//cloudService.getAllCards().get(0).getNumber();
+        var cardFount = cloudService.getSubscriptionByBankCardNumber(card)
+                .orElseThrow(() -> new NoSubscriptionForCardException(String.format("No Subscription`s for card %s", card)));
+        System.out.println("Card Found: " + cardFount);
 
         System.out.printf("Average user age is: %s", cloudService.getAverageUsersAge());
         System.out.println();
