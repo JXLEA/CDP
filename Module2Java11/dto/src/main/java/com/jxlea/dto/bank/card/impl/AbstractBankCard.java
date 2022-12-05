@@ -1,9 +1,13 @@
-package com.jxlea.dto.bank.card;
+package com.jxlea.dto.bank.card.impl;
 
+import com.jxlea.dto.bank.card.BankCard;
 import com.jxlea.dto.user.User;
 import lombok.ToString;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @ToString
 public abstract class AbstractBankCard implements BankCard {
@@ -16,11 +20,14 @@ public abstract class AbstractBankCard implements BankCard {
     }
 
     private String generateCardNumber() {
-        return String.format("%S %S %S %S", generateQuarter(), generateQuarter(), generateQuarter(), generateQuarter());
+        return String.format("%S", generateQuarter());
     }
 
-    private Integer generateQuarter() {
-        return ThreadLocalRandom.current().nextInt(1000, 9999);
+    private String generateQuarter() {
+        return Stream.generate(() -> ThreadLocalRandom.current().nextInt(1000, 9999))
+                .limit(4)
+                .map(Objects::toString)
+                .collect(Collectors.joining(" "));
     }
 
     @Override

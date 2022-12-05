@@ -8,6 +8,8 @@ import com.jxlea.dto.user.User;
 import com.jxlea.service.Service;
 import java.time.LocalDate;
 
+import static java.lang.String.format;
+
 public class Demo {
 
     //TODO write tests
@@ -50,21 +52,24 @@ public class Demo {
 
 
 
-
-
-
         System.out.println("USERS------");
         cloudService.getAllUsers().forEach(System.out::println);
+
         System.out.println("CARDS------");
         cloudService.getAllCards().forEach(System.out::println);
 
-        var card = "4403 7504 8009 9457" ;//cloudService.getAllCards().get(0).getNumber();
-        var cardFount = cloudService.getSubscriptionByBankCardNumber(card)
-                .orElseThrow(() -> new NoSubscriptionForCardException(String.format("No Subscription`s for card %s", card)));
-        System.out.println("Card Found: " + cardFount);
 
-        System.out.printf("Average user age is: %s", cloudService.getAverageUsersAge());
-        System.out.println();
-        System.out.printf("User is payable? --%s", Service.isPayableUser(fowler));
+        var card = cloudService.getAllCards().get(0).getNumber();
+
+        var cardFount = cloudService.getSubscriptionByBankCardNumber(card)
+                .orElseThrow(() -> new NoSubscriptionForCardException(format("No Subscription`s for card %s", card)));
+        System.out.println("Card Found: " + cardFount);
+        System.out.printf("Average user age is: %s + \n", cloudService.getAverageUsersAge());
+        System.out.printf("User is payable? --%s + \n", Service.isPayableUser(fowler));
+
+        var subscriptionByPredicate = cloudService.getAllSubscriptionByCondition(
+                subscription -> subscription.bankCard().startsWith("4"));
+
+        System.out.println(subscriptionByPredicate);
     }
 }
