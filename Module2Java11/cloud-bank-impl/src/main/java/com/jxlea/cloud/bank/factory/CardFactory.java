@@ -12,6 +12,8 @@ public class CardFactory {
     }
 
     public static BankCard createCredit(User user) {
-        return new CreditBankCard(user);
+        CreditBankCard.CreditCard card = CreditBankCard::new;
+        return card.get(user);
     }
 }
+

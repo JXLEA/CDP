@@ -13,4 +13,8 @@ public class CreditBankCard extends AbstractBankCard {
     public BankCardType getType() {
         return BankCardType.CREDIT;
     }
+
+    public interface CreditCard {
+        CreditBankCard get(User user);
+    }
 }
