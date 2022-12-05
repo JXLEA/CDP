@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public interface Service {
 
@@ -23,6 +24,8 @@ public interface Service {
         var dateOfBirthday = user.birthday();
         return ChronoUnit.YEARS.between(dateOfBirthday, LocalDate.now()) > 18;
     }
+
+    List<Subscription> getAllSubscriptionByCondition(Predicate<Subscription> condition);
 
     void subscribe(BankCard bankCard);
 
