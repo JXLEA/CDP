@@ -3,5 +3,5 @@ module cloud.service.impl {
     requires transitive service.api;
     requires dto;
 
-    exports com.jxlea.cloud.service;
+    provides com.jxlea.service.Service with com.jxlea.cloud.service.CloudService;
 }

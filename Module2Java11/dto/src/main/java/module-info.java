@@ -1,3 +1,4 @@
+
 module dto {
     requires lombok;
 
@@ -6,4 +7,5 @@ module dto {
     exports com.jxlea.dto.bank.card;
     exports com.jxlea.dto.bank.card.type;
     exports com.jxlea.dto.bank.card.impl;
+
 }
